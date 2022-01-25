@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  labels:
+    app: postgres
+data:
+  POSTGRES_DB: news-agency
+  POSTGRES_USER: idk
+  POSTGRES_PASSWORD: SomeUselessPassword02
