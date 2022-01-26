@@ -23,11 +23,15 @@ k3s kubectl -n kubernetes-dashboard describe secret admin-user-token | grep '^to
 [Guide](https://blog.tekspace.io/deploying-kubernetes-dashboard-in-k3s-cluster/)
 
 
-# Deploy Loki Stack (Loki, Promtail, Grafana, Prometheus) with persistent volume claim
+# Deploy Loki Stack (Loki, Promtail, Grafana, Prometheus)
 ````
 helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
-helm upgrade --install loki grafana/loki-stack  --set grafana.enabled=true,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false,loki.persistence.enabled=true,loki.persistence.storageClassName=standard,loki.persistence.size=5Gi
+helm upgrade --install loki grafana/loki-stack  --set grafana.enabled=true,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
+````
+2. Obtain auth token
+````
+kubectl get secret --namespace default loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 ````
 # For docker-compose
 ````
