@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: currency-checker
 spec:
+  selector:
+    match-labels:
+      app: currency-checker
   replicas: 2
   template:
     metadata:
