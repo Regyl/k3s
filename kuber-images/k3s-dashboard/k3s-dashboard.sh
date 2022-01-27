@@ -3,6 +3,11 @@ VERSION_KUBE_DASHBOARD=$(curl -w '%{url_effective}' -I -L -s -S ${GITHUB_URL}/la
 k3s kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/${VERSION_KUBE_DASHBOARD}/aio/deploy/recommended.yaml
 pid=$!
 wait $pid
+echo "Change type: ClusterIP to NodePort. Remember field ports/nodePort value"
+sleep 10
+k3s kubectl edit svc kubernetes-dashboard -n kubernetes-dashboard
+pid=$!
+wait $pid
 k3s kubectl create -f dashboard.admin-user.yml -f dashboard.admin-user-role.yml
 echo "Token for dashboard auth:"
 k3s kubectl -n kubernetes-dashboard describe secret admin-user-token | grep '^token'
