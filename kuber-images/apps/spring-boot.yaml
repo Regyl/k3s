@@ -4,9 +4,9 @@ metadata:
   name: currency-checker
 spec:
   selector:
-    match-labels:
+    matchLabels:
       app: currency-checker
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -14,7 +14,7 @@ spec:
         visualize: "true"
     spec:
       containers:
-      - name: CurrencyChecker
+      - name: currency-checker
         image: regyl/currency-checker #Docker image
         ports:
         - containerPort: 8080
