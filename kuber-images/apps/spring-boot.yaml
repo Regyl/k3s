@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: currency-checker
-  replicas: 1
+  replicas: 1 #Pods quantity for one deployment
   template:
     metadata:
       labels:
