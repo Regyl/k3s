@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: currency-checker
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: currency-checker
+        visualize: "true"
+    spec:
+      containers:
+      - name: CurrencyChecker
+        image: regyl/currency-checker #Docker image
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    visualize: "true"
+  name: currency-checker-service
+spec:
+  selector:
+    app: currency-checker
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+  type: ClusterIP
