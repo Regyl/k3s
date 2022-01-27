@@ -1,3 +1,4 @@
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
 pid=$!
