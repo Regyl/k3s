@@ -1,4 +1,5 @@
 # Setup k3s
+Runnin *k3s.sh* to install k3s, k3s-dashboard, Grafana/Loki or use the command below to install only k3s master node.
 ````
 curl -sfL https://get.k3s.io | sh -
 ````
