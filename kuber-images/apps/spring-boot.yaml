@@ -1,36 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: currency-checker
+  name: yasn-cloud-config
 spec:
   selector:
     matchLabels:
-      app: currency-checker
+      app: yasn-cloud-config
   replicas: 1 #Pods quantity for one deployment
   template:
     metadata:
       labels:
-        app: currency-checker
+        app: yasn-cloud-config
         visualize: "true"
     spec:
       containers:
-      - name: currency-checker
-        image: regyl/currency-checker #Docker image
+      - name: yasn-cloud-config
+        image: regyl/yasn-cloud-config #Docker image
         ports:
-        - containerPort: 8080
+        - containerPort: 8760
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
     visualize: "true"
-  name: currency-checker-service
+  name: yasn-cloud-config-service
 spec:
   selector:
-    app: currency-checker
+    app: yasn-cloud-config
   ports:
   - name: http
     protocol: TCP
-    port: 8080
-    targetPort: 8080
+    port: 8760
+    targetPort: 8760
   type: ClusterIP
