@@ -15,7 +15,7 @@ cat > "$APPNAME.yaml" << EOF
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: yasn-cloud-config
+  name: $APPNAME
 spec:
   selector:
     matchLabels:
@@ -52,4 +52,10 @@ EOF
 
 firewall-cmd --add-port="$PORT"/tcp
 k3s kubectl apply -f "$APPNAME.yaml"
+
+echo "Forwarding port to external network"
+k3s kubectl port-forward svc/$APPNAME-service $PORT:$PORT --address=0.0.0.0
+pid=$!
+wait $pid
+
 echo 'Something like Happy Helming :D'
