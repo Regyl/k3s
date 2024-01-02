@@ -19,7 +19,9 @@ pid=$!
 wait $pid
 
 echo "Run \password to change superuser password"
+sleep 3s
+
+echo "Next is for a local authentication through psql -U...:"
 echo "And then run show hba_file;"
 echo "And then change as said here from peer to md5: https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge"
-sleep 10 
 sudo -u postgres psql

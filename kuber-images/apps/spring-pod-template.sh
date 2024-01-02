@@ -53,6 +53,9 @@ EOF
 firewall-cmd --add-port="$PORT"/tcp
 k3s kubectl apply -f "$APPNAME.yaml"
 
+# THIS IS A CRUNCH: switch to waiting for status "ready"
+sleep 10s
+
 echo "Forwarding port to external network"
 k3s kubectl port-forward svc/$APPNAME-service $PORT:$PORT --address=0.0.0.0
 pid=$!
