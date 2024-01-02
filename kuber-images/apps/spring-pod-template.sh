@@ -50,7 +50,7 @@ spec:
   type: ClusterIP
 EOF
 
-firewall-cmd --add-port="$PORT"/tcp
+firewall-cmd --permanent --add-port="$PORT"/tcp
 k3s kubectl apply -f "$APPNAME.yaml"
 
 # THIS IS A CRUNCH: switch to waiting for status "ready"
