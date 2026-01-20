@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "1. Update installed packages"
+echo "1. Update installed packages..."
 dnf update
 
 echo "2. Let's check SSH default port (it must differs from 22)"
