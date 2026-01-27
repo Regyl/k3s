@@ -18,3 +18,7 @@ pid=$!
 wait $pid
 
 systemctl status docker
+pid=$!
+wait $pid
+
+echo "Finished!"
