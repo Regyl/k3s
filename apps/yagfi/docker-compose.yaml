@@ -1,0 +1,49 @@
+services:
+  postgres:
+    image: postgres:15.3
+    container_name: yagfi-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: 'idk_user'
+      POSTGRES_PASSWORD: 'SomeUselessPassword02'
+      POSTGRES_DB: 'uj'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    networks:
+      - yagfi-net
+
+  backend:
+    image: regyl/yagfi-back:latest
+    container_name: yagfi-back
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    environment:
+      APP_HOST_NAME: 'postgres'
+      GithubBearer: '<github token>'
+    ports:
+      - '8080:8080'
+    networks:
+      - yagfi-net
+
+  frontend:
+    image: regyl/yagfi-front:latest
+    container_name: yagfi-front
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      REACT_APP_API_URL: 'http://yagfi.com:8080/api/issues'
+    ports:
+      - '80:80'
+    networks:
+      - yagfi-net
+
+volumes:
+  postgres_data:
+
+networks:
+  yagfi-net:
+    driver: bridge
