@@ -11,6 +11,12 @@ docker rmi regyl/yagfi-back:latest
 pid=$!
 wait $pid
 
+docker volume rm yagfi_postgres_data
+pid=$!
+wait $pid
+
 docker compose up -d
+pid=$!
+wait $pid
 
 echo "Started"
