@@ -22,9 +22,9 @@ services:
       - postgres
     environment:
       APP_HOST_NAME: 'postgres'
-      GithubBearer: '<change me>'
-      EMAIL_USERNAME: '<change me>'
-      EMAIL_PASSWORD: '<change me>'
+      GithubBearer: ${GITHUB_BEARER}
+      EMAIL_USERNAME: ${EMAIL_USERNAME}
+      EMAIL_PASSWORD: ${EMAIL_PASSWORD}
     ports:
       - "8080:8080"
     networks:
