@@ -23,6 +23,8 @@ services:
     environment:
       APP_HOST_NAME: 'postgres'
       GithubBearer: '<change me>'
+      EMAIL_USERNAME: '<change me>'
+      EMAIL_PASSWORD: '<change me>'
     ports:
       - "8080:8080"
     networks:
@@ -35,11 +37,87 @@ services:
     depends_on:
       - backend
     environment:
-      REACT_APP_API_URL: 'http://yagfi.com:8080/api/issues'
+      REACT_APP_API_URL: 'http://yagfi.com:8080/api'
     ports:
       - "80:80"
     networks:
       - yagfi-net
+
+  cdxgen-0:
+    image: ghcr.io/cyclonedx/cdxgen:v11.11.0
+    container_name: cdxgen-0
+    ports:
+      - '9090:9090'
+    environment:
+      CDXGEN_DEBUG_MODE: "debug"
+    networks:
+      - yagfi-net
+    command: >
+      cdxgen
+      --no-babel
+      --server
+      --server-host 0.0.0.0
+      --server-port 9090
+  cdxgen-1:
+    image: ghcr.io/cyclonedx/cdxgen:v11.11.0
+    container_name: cdxgen-1
+    ports:
+      - '9091:9090'
+    environment:
+      CDXGEN_DEBUG_MODE: "debug"
+    networks:
+      - yagfi-net
+    command: >
+      cdxgen
+      --no-babel
+      --server
+      --server-host 0.0.0.0
+      --server-port 9090
+  cdxgen-2:
+    image: ghcr.io/cyclonedx/cdxgen:v11.11.0
+    container_name: cdxgen-2
+    ports:
+      - '9092:9090'
+    environment:
+      CDXGEN_DEBUG_MODE: "debug"
+    networks:
+      - yagfi-net
+    command: >
+      cdxgen
+      --no-babel
+      --server
+      --server-host 0.0.0.0
+      --server-port 9090
+  cdxgen-3:
+    image: ghcr.io/cyclonedx/cdxgen:v11.11.0
+    container_name: cdxgen-3
+    ports:
+      - '9093:9090'
+    environment:
+      CDXGEN_DEBUG_MODE: "debug"
+    networks:
+      - yagfi-net
+    command: >
+      cdxgen
+      --no-babel
+      --server
+      --server-host 0.0.0.0
+      --server-port 9090
+  cdxgen-4:
+    image: ghcr.io/cyclonedx/cdxgen:v11.11.0
+    container_name: cdxgen-4
+    ports:
+      - '9094:9090'
+    environment:
+      CDXGEN_DEBUG_MODE: "debug"
+    networks:
+      - yagfi-net
+    command: >
+      cdxgen
+      --no-babel
+      --server
+      --server-host 0.0.0.0
+      --server-port 9090
 
 volumes:
   postgres_data:
