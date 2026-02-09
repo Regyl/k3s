@@ -67,7 +67,7 @@ services:
     image: ghcr.io/cyclonedx/cdxgen:v11.11.0
     container_name: cdxgen-1
     ports:
-      - '127.0.0.1:9091:9090'
+      - '127.0.0.1:9090:9090'
     environment:
       CDXGEN_DEBUG_MODE: "debug"
     networks:
@@ -82,7 +82,7 @@ services:
     image: ghcr.io/cyclonedx/cdxgen:v11.11.0
     container_name: cdxgen-2
     ports:
-      - '127.0.0.1:9092:9090'
+      - '127.0.0.1:9090:9090'
     environment:
       CDXGEN_DEBUG_MODE: "debug"
     networks:
@@ -97,7 +97,7 @@ services:
     image: ghcr.io/cyclonedx/cdxgen:v11.11.0
     container_name: cdxgen-3
     ports:
-      - '127.0.0.1:9093:9090'
+      - '127.0.0.1:9090:9090'
     environment:
       CDXGEN_DEBUG_MODE: "debug"
     networks:
@@ -112,7 +112,7 @@ services:
     image: ghcr.io/cyclonedx/cdxgen:v11.11.0
     container_name: cdxgen-4
     ports:
-      - '127.0.0.1:9094:9090'
+      - '127.0.0.1:9090:9090'
     environment:
       CDXGEN_DEBUG_MODE: "debug"
     networks:
