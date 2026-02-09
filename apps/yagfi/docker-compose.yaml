@@ -20,6 +20,11 @@ services:
     restart: unless-stopped
     depends_on:
       - postgres
+      - cdxgen-0
+      - cdxgen-1
+      - cdxgen-2
+      - cdxgen-3
+      - cdxgen-4
     environment:
       APP_HOST_NAME: 'postgres'
       GithubBearer: ${GITHUB_BEARER}
