@@ -67,7 +67,7 @@ services:
     image: ghcr.io/cyclonedx/cdxgen:v11.11.0
     container_name: cdxgen-1
     ports:
-      - '127.0.0.1:9090:9090'
+      - '127.0.0.1:9091:9091'
     environment:
       CDXGEN_DEBUG_MODE: "debug"
     networks:
@@ -77,12 +77,12 @@ services:
       --no-babel
       --server
       --server-host 0.0.0.0
-      --server-port 9090
+      --server-port 9091
   cdxgen-2:
     image: ghcr.io/cyclonedx/cdxgen:v11.11.0
     container_name: cdxgen-2
     ports:
-      - '127.0.0.1:9090:9090'
+      - '127.0.0.1:9092:9092'
     environment:
       CDXGEN_DEBUG_MODE: "debug"
     networks:
@@ -92,12 +92,12 @@ services:
       --no-babel
       --server
       --server-host 0.0.0.0
-      --server-port 9090
+      --server-port 9092
   cdxgen-3:
     image: ghcr.io/cyclonedx/cdxgen:v11.11.0
     container_name: cdxgen-3
     ports:
-      - '127.0.0.1:9090:9090'
+      - '127.0.0.1:9093:9093'
     environment:
       CDXGEN_DEBUG_MODE: "debug"
     networks:
@@ -107,12 +107,12 @@ services:
       --no-babel
       --server
       --server-host 0.0.0.0
-      --server-port 9090
+      --server-port 9093
   cdxgen-4:
     image: ghcr.io/cyclonedx/cdxgen:v11.11.0
     container_name: cdxgen-4
     ports:
-      - '127.0.0.1:9090:9090'
+      - '127.0.0.1:9094:9094'
     environment:
       CDXGEN_DEBUG_MODE: "debug"
     networks:
@@ -122,7 +122,7 @@ services:
       --no-babel
       --server
       --server-host 0.0.0.0
-      --server-port 9090
+      --server-port 9094
 
 volumes:
   postgres_data:
