@@ -42,7 +42,7 @@ services:
     depends_on:
       - backend
     environment:
-      REACT_APP_API_URL: 'http://yagfi.com:8080/api'
+      VITE_APP_API_URL: 'http://yagfi.com:8080/api'
     ports:
       - '80:80'
     networks:
